@@ -14,8 +14,6 @@ Create an app with `cargo new my-app`, add the dependency, and copy the complete
 
 `rusty_gpui::run("My app", build_view)` sets up the window, bundled assets, fonts, default theme and overlay layers. Import the matching GPUI APIs through `rusty_gpui::gpui`; applications normally need only the `rusty-gpui` dependency.
 
-Coming from JavaScript? See the [Node.js developer guide](docs/coming-from-node.md).
-
 ## Examples and gallery
 
 From this repository:
