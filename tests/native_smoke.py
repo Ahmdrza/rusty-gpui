@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STATE = Path(os.environ.get('RUSTY_GPUI_SMOKE_STATE', ROOT / '.smoke/state.json'))
 SHOT = ROOT / '.smoke/current.png'
 SHOT.parent.mkdir(exist_ok=True)
+(ROOT / 'target/native-review').mkdir(parents=True, exist_ok=True)
 X = C.CDLL('libX11.so.6')
 XT = C.CDLL('libXtst.so.6')
 X.XOpenDisplay.argtypes = [C.c_char_p]
@@ -112,7 +113,7 @@ def category(label,index):
 
 def run():
     wait_for(lambda s:s.get('theme',{}).get('mode')=='light','native startup renders light theme')
-    capture(ROOT/'docs/native-light.png')
+    capture(ROOT/'target/native-review/native-light.png')
     category('Actions',2)
     baseline_clicks = state().get('clicks',0)
     click_text('Create workspace',lambda x,y:210<x<1040)
@@ -144,7 +145,7 @@ def run():
     category('Overlays',6)
     click_text('Open modal',lambda x,y:210<x<1040)
     wait_for(lambda s:s.get('dialog') is True,'native modal opens')
-    capture(ROOT/'docs/native-modal.png')
+    capture(ROOT/'target/native-review/native-modal.png')
     key(0xff1b) # Escape
     wait_for(lambda s:s.get('dialog') is False,'native modal Escape closes')
     click_text('Open drawer',lambda x,y:210<x<1040)
@@ -157,11 +158,11 @@ def run():
     wait_for(lambda s:s.get('rows')==10000,'native 10,000-row virtualized table')
     click_text('Sample 120 frames',lambda x,y:210<x<1040)
     wait_for(lambda s:s.get('remaining')==0 and '120 samples' in s.get('benchmark',''),'native frame sampling completes',timeout=25)
-    capture(ROOT/'docs/native-lab.png')
+    capture(ROOT/'target/native-review/native-lab.png')
 
     click_text('Dark',lambda x,y:x>1040)
     wait_for(lambda s:s.get('theme',{}).get('mode')=='dark','native dark appearance')
-    capture(ROOT/'docs/native-dark.png')
+    capture(ROOT/'target/native-review/native-dark.png')
     print('Native pointer/state/overlay/benchmark smoke checks passed.',flush=True)
 
 if __name__ == '__main__':

@@ -78,4 +78,4 @@ Examples are useful documentation and do not run in a consuming app. A normal ap
 
 Use `cargo package --list -p rusty-gpui` to inspect the facade's package contents. Follow RELEASING.md for the full five-crate verification and dependency order. Nothing in the example commands publishes a package.
 
-This simpler setup does not change the platform/support limits in [production readiness](production-readiness.md).
+This simpler setup does not change the platform/support limits in [support and limitations](support.md).

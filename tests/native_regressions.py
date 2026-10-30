@@ -101,8 +101,8 @@ click_text('Open drawer',lambda x,y:210<x<1040)
 wait_for(lambda s:s.get('sheet') is True,'drawer opens')
 position('Project details',lambda x,y:x>900)
 time.sleep(.3)
-capture(ROOT/'docs/native-drawer.png')
-after=Image.open(ROOT/'docs/native-drawer.png').convert('RGB')
+capture(ROOT/'target/native-review/native-drawer.png')
+after=Image.open(ROOT/'target/native-review/native-drawer.png').convert('RGB')
 after_pixel=after.getpixel((500,12))
 assert sum(after_pixel)<sum(before_pixel)-30, f'top of client area has no backdrop: {before_pixel} -> {after_pixel}'
 assert after.getpixel((1150,12))!=after_pixel,'drawer panel does not reach the top'

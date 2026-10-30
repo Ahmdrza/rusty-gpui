@@ -1,6 +1,6 @@
 # Native component catalog
 
-The native gallery is the reference implementation. The browser concept is archived separately and is not required by this project.
+The native gallery demonstrates the component families below.
 
 | Family | Interactive gallery specimens |
 |---|---|

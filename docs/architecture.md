@@ -53,7 +53,7 @@ One theme per GPUI App is supported, matching the existing global theme model. S
 3. Derive geometry from tokens. Include nested controls and measurement/scroll calculations when migrating a family.
 4. Add a real interactive gallery specimen. Inspect empty/filled, selected, focus, disabled and loading states as relevant, at multiple theme densities and font sizes.
 
-Core macOS visual and keyboard interactions have been exercised locally; see [native review](local-macos-review.md) for exact coverage and remaining gaps. The runtime lacks a semantic accessibility tree and platform adapters for custom controls; see [production readiness gates](production-readiness.md). Specialized widgets require further review.
+See [support and limitations](support.md) for current platform and accessibility coverage. The runtime lacks a semantic accessibility tree and platform adapters for custom controls; see [support and limitations](support.md). Specialized widgets require further review.
 
 ## Assets and platform features
 

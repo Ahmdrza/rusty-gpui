@@ -34,6 +34,12 @@ Use the gallery for native review of relevant focus, keyboard, disabled, loading
 
 Before a release, run the package/isolated-consumer checks in RELEASING.md. Dependencies between publishable packages must declare both a path for local development and a matching registry version. No library may depend on the gallery or on an unpublished Cargo patch.
 
+## Dependency checks
+
+Use `cargo tree` or `python3 scripts/dependency-report.py` to inspect dependencies. Run `cargo audit` for the workspace lockfile. After the package check, also run `cargo audit --deny unsound --file target/release-check/consumer/Cargo.lock`. These graphs differ: optional webview and test-support dependencies may have findings absent from the default consumer. Review findings without silently suppressing advisories.
+
+The optional Linux/X11 checks in `tests/native_smoke.py` and `tests/native_regressions.py` require the tools listed in their headers. Their generated screenshots belong under `target/native-review`, outside Git.
+
 ## Upstream maintenance
 
 rusty-gpui-components is derived from GPUI Component 0.5.1. Preserve its Apache license and attribution, record the source version in UPSTREAM.md and inspect the Rusty GPUI patch set when updating. It is published under its own name, not as an upstream release. Other packages in the source tree retain their existing licenses.
