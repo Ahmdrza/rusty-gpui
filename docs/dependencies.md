@@ -17,3 +17,5 @@ These are maintained forks, not official upstream releases. Preserve their Apach
 Use `rusty_gpui::gpui` for the matching runtime types. Do not mix them with the separate registry `gpui` package or upstream GPUI Component's Root/theme globals.
 
 Inspect the current dependency graph with `cargo tree` or `python3 scripts/dependency-report.py`. Platform features affect the graph: macOS uses native Metal and font-kit, while Linux enables X11 and Wayland.
+
+Upstream GPUI Kit 0.8.1 separates behavior into `gpui-base` and pins a newer GPUI runtime snapshot. Adopting it requires adapting runtime types, Root/overlay setup and Rusty GPUI's control/theme integration together; it is not a compatible 0.4.x dependency update. See the [pinned upstream manifest](https://github.com/longbridge/gpui-kit/blob/v0.8.1/Cargo.toml) and [release migration notes](https://github.com/longbridge/gpui-kit/releases/tag/v0.8.1). An upgraded runtime alone does not establish component accessibility; semantic roles, labels, states and native checks are still required.

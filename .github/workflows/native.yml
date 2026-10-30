@@ -45,9 +45,10 @@ jobs:
       - name: Find macOS Metal compiler
         if: runner.os == 'macOS'
         run: xcrun --find metal || xcodebuild -downloadComponent MetalToolchain
-      - run: cargo fmt -p rusty-gpui-theme -p rusty-gpui -p rusty-gpui-gallery --check
+      - run: cargo fmt -p rusty-gpui-theme -p rusty-gpui -p rusty-gpui-gallery -p rusty-gpui-settings --check
       - run: cargo check --locked --workspace
-      - run: cargo check --locked -p rusty-gpui --example minimal
+      - run: cargo check --locked -p rusty-gpui --examples
       - run: cargo test --locked -p rusty-gpui-theme
       - run: cargo test --locked -p rusty-gpui-gallery
+      - run: cargo test --locked -p rusty-gpui-settings
       - run: cargo test --locked -p rusty-gpui --doc

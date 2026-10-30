@@ -20,11 +20,12 @@ Running the application also requires an X11 or Wayland graphical session and a 
 ## Checks
 
 ```sh
-cargo fmt -p rusty-gpui-theme -p rusty-gpui -p rusty-gpui-gallery --check
+cargo fmt -p rusty-gpui-theme -p rusty-gpui -p rusty-gpui-gallery -p rusty-gpui-settings --check
 cargo check --locked --workspace
-cargo check --locked -p rusty-gpui --example minimal
+cargo check --locked -p rusty-gpui --examples
 cargo test --locked -p rusty-gpui-theme
 cargo test --locked -p rusty-gpui-gallery
+cargo test --locked -p rusty-gpui-settings
 cargo test --locked -p rusty-gpui --doc
 ```
 
@@ -33,6 +34,10 @@ The maintained fork retains upstream formatting where possible to keep synchroni
 Use the gallery for native review of relevant focus, keyboard, disabled, loading, error and scrolling states. Inspect representative light/dark themes and compact/spacious typography settings. Do not treat a compile check as native behavior validation.
 
 Before a release, run the package/isolated-consumer checks in RELEASING.md. Dependencies between publishable packages must declare both a path for local development and a matching registry version. No library may depend on the gallery or on an unpublished Cargo patch.
+
+## Build measurements
+
+After caching dependencies, run `python3 scripts/measure-build.py --target-dir target/measurements/settings-1` to measure a fresh development build of the settings app. Choose a new target directory each time; the script never deletes caches. It records build time and executable size locally. These measurements exclude dependency downloads and do not measure optimized release size, startup latency or GPU performance.
 
 ## Dependency checks
 

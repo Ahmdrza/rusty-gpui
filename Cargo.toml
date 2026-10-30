@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/rusty-gpui-http", "crates/rusty-gpui-runtime", "crates/rusty-gpui-theme", "crates/rusty-gpui-components", "crates/rusty-gpui", "apps/gallery"]
+members = ["crates/rusty-gpui-http", "crates/rusty-gpui-runtime", "crates/rusty-gpui-theme", "crates/rusty-gpui-components", "crates/rusty-gpui", "apps/gallery", "apps/settings"]
 default-members = ["crates/rusty-gpui-theme", "crates/rusty-gpui"]
 resolver = "2"
 

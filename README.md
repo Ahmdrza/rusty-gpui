@@ -27,6 +27,8 @@ cargo run -p rusty-gpui-gallery
 
 The examples cover text and buttons, editable forms with validation, checkboxes, switches, dialogs, drawers and notifications. The [minimal example](crates/rusty-gpui/examples/minimal.rs) demonstrates explicit setup for custom window options and application lifecycle.
 
+For a complete application workflow, run `cargo run -p rusty-gpui-settings`. Its source is in [apps/settings](apps/settings/src/main.rs): background loading/saving, validation, error recovery, navigation, theme preview and unsaved-change confirmation. It saves settings in your user configuration directory; set `RUSTY_GPUI_SETTINGS_DIR` to use a separate directory.
+
 The gallery includes component demos, a theme inspector and a virtualized table. Examples and the gallery stay in this repository; consuming apps do not build them automatically.
 
 macOS requires full Xcode and the Metal compiler. Linux requires graphics, windowing and font libraries. See [native prerequisites](CONTRIBUTING.md#native-prerequisites).
