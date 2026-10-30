@@ -1,0 +1,98 @@
+{
+  "project": "Rusty GPUI",
+  "version": "0.4.0",
+  "published": false,
+  "repository": "https://github.com/Ahmdrza/rusty-gpui",
+  "repository_url_set": true,
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13) (Homebrew)",
+  "validation": {
+    "package_manifests_and_assets": "passed",
+    "isolated_registry_resolution": "passed",
+    "isolated_registry_consumer": "passed",
+    "packaged_quickstart_doctest": "passed",
+    "packaged_starter_build": "passed",
+    "workspace_check": "passed after runtime activation and password changes; final gallery/table changes compiled by final native gallery build",
+    "focused_unit_tests": "6 gallery and 5 theme tests passed",
+    "formatting": "passed for facade/theme/gallery",
+    "packaged_documentation": "passed for facade/theme; broken intra-doc links denied",
+    "packaged_starter_native": "prior packaged manual starter passed; final packaged simple overlays example launched and passed dialog, notification, drawer and shutdown checks",
+    "macos_runtime": "see local-macos-review.md for exact native checks and limits",
+    "macos_activation_deadlock": "reproduced with stack sample, fixed by releasing mutex before synchronous AppKit callback; native activation and resize rechecked",
+    "overlay_focus_regression": "forward/reverse modal and drawer focus containment and restoration rechecked natively",
+    "password_reveal": "native Tab/Enter reveal and Space mask passed",
+    "dynamic_picker_disable": "open select and date popup closed when disabled; disabled triggers stayed closed",
+    "table_columns": "native resize and reorder passed with stable header/cell association; unit regression passed",
+    "horizontal_scrolling": "keyboard navigation observed; two-finger trackpad scroll manually confirmed by user with stationary surrounding page",
+    "compact_layout": "600px and 800px native layouts, navigation, theme inspector, search and overlays reviewed",
+    "screen_reader": "not implemented: semantic controls absent from platform accessibility tree",
+    "github_actions": "native/security/package workflows configured; no remote run verified",
+    "docs_rs_service": "not published; hosted build not verified",
+    "dependency_advisories": {
+      "tool": "cargo-audit 0.22.2",
+      "database": {
+        "advisory-count": 1386,
+        "last-commit": null,
+        "last-updated": null
+      },
+      "packaged_consumer": {
+        "vulnerabilities": 0,
+        "unsoundness": 0,
+        "maintenance_warnings": 14,
+        "deny_unsound": "passed"
+      },
+      "workspace_lock": {
+        "vulnerabilities": 0,
+        "unsoundness_warnings": 4,
+        "maintenance_warnings": 16
+      },
+      "details": "dependency-audit.md"
+    },
+    "packaged_examples": "passed",
+    "simple_launcher_examples": "form validation/edit/save/checkbox/disable passed before bounds-only adjustment; final packaged overlays dialog/OK notification/drawer/Done and last-window shutdown passed"
+  },
+  "artifacts": [
+    {
+      "file": "rusty-gpui-http-0.4.0.crate",
+      "sha256": "05201044d240db384218177d6d97ea4af7c0be052beaa3a26810e17a5e6a1f4b",
+      "bytes": 32919,
+      "files": 10
+    },
+    {
+      "file": "rusty-gpui-runtime-0.4.0.crate",
+      "sha256": "591323f544657375a6975b4d5dfedd1655f8b292fcb9d696cf2b7ed2ccef25e4",
+      "bytes": 633907,
+      "files": 145
+    },
+    {
+      "file": "rusty-gpui-theme-0.4.0.crate",
+      "sha256": "38833eb841c83045c457245d4d352b47590d4650c0548c3eda71a1801afed506",
+      "bytes": 5733,
+      "files": 6
+    },
+    {
+      "file": "rusty-gpui-components-0.4.0.crate",
+      "sha256": "4c4447038372080cf07350ab6f6bd9c5dd698bdd1a17c5d67cec508c52144141",
+      "bytes": 430649,
+      "files": 211
+    },
+    {
+      "file": "rusty-gpui-0.4.0.crate",
+      "sha256": "5ba499744ec42756fc62748f5d86935263f5839efbcb2bdca2d9cb86a0303a42",
+      "bytes": 537120,
+      "files": 107
+    }
+  ],
+  "validated_date": "2026-10-30",
+  "platform": {
+    "architecture": "arm64",
+    "macos": "27.0.1",
+    "xcode": "27.1 (27A9275)"
+  },
+  "remaining_limits": [
+    "Runtime lacks semantic screen-reader support for custom controls.",
+    "Fresh native Linux/Windows execution and alternate display scales/monitors unavailable in this macOS session.",
+    "Remote CI and hosted docs.rs cannot be verified before push/publication.",
+    "Third-party block 0.1.6 and proc-macro-error2 2.0.1 emit future-compatibility notices.",
+    "Dependency maintenance warnings and optional webview/test-support unsoundness advisories remain; see dependency-audit.md."
+  ]
+}

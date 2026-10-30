@@ -1,0 +1,22 @@
+[workspace]
+members = ["crates/rusty-gpui-http", "crates/rusty-gpui-runtime", "crates/rusty-gpui-theme", "crates/rusty-gpui-components", "crates/rusty-gpui", "apps/gallery"]
+default-members = ["crates/rusty-gpui-theme", "crates/rusty-gpui"]
+resolver = "2"
+
+[workspace.package]
+version = "0.4.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/Ahmdrza/rusty-gpui"
+
+[workspace.dependencies]
+http_client = { package = "rusty-gpui-http", version = "=0.4.0", path = "crates/rusty-gpui-http" }
+rusty-gpui-theme = { version = "=0.4.0", path = "crates/rusty-gpui-theme" }
+rusty-gpui = { version = "=0.4.0", path = "crates/rusty-gpui" }
+gpui = { package = "rusty-gpui-runtime", version = "=0.4.0", path = "crates/rusty-gpui-runtime", default-features = false }
+gpui-component = { package = "rusty-gpui-components", version = "=0.4.0", path = "crates/rusty-gpui-components" }
+
+[profile.dev]
+debug = 0
+
+

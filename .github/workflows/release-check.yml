@@ -1,0 +1,55 @@
+name: Package release candidate
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: release-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+      - name: Install Linux prerequisites
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake pkg-config libasound2-dev libssl-dev libudev-dev libfontconfig1-dev libfreetype6-dev libglib2.0-dev libwayland-dev libx11-dev libx11-xcb-dev libxcb1-dev libxcb-shm0-dev libxcb-xinput-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev libvulkan-dev
+      - name: Find macOS Metal compiler
+        if: runner.os == 'macOS'
+        run: xcrun --find metal || xcodebuild -downloadComponent MetalToolchain
+      - name: Set actual repository metadata
+        run: python3 scripts/set-repository.py "https://github.com/${GITHUB_REPOSITORY}"
+      - name: Cache locked dependencies for offline staging
+        run: cargo fetch --locked
+      - name: Package and compile isolated registry consumer
+        run: python3 scripts/check-release.py --build-consumer
+      - name: Install RustSec auditor
+        run: cargo install cargo-audit --locked
+      - name: Audit packaged consumer including unsoundness advisories
+        run: cargo audit --deny unsound --file target/release-check/consumer/Cargo.lock --json > target/release-check/dependency-audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rusty-gpui-crate-candidates-${{ runner.os }}
+          path: |
+            target/package/rusty-gpui*.crate
+            target/release-check/report.json
+            target/release-check/dependency-audit.json
+          if-no-files-found: error

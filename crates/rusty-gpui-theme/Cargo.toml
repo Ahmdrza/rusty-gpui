@@ -1,0 +1,13 @@
+[package]
+repository.workspace = true
+name = "rusty-gpui-theme"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+documentation = "https://docs.rs/rusty-gpui-theme"
+readme = "README.md"
+include = ["src/**", "assets/**", "examples/**", "README.md", "LICENSE"]
+keywords = ["design-system", "theme", "gui"]
+categories = ["gui"]
+description = "Dependency-free semantic theme generation for Rusty GPUI"
+

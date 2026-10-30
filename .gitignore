@@ -1,0 +1,18 @@
+/target/
+/node_modules/
+/test-results/
+*.log
+.DS_Store
+/.native-libs/
+/.native-runtime/
+/.xdg/
+/.smoke*/
+
+# Local credentials and release tooling state.
+.env
+.env.*
+!.env.example
+/target-release/
+*.crate
+/.cargo/credentials
+/.cargo/credentials.toml
