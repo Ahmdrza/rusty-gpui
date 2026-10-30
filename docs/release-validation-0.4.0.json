@@ -1,7 +1,7 @@
 {
   "project": "Rusty GPUI",
   "version": "0.4.0",
-  "published": false,
+  "published": true,
   "repository": "https://github.com/Ahmdrza/rusty-gpui",
   "repository_url_set": true,
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13) (Homebrew)",
@@ -25,8 +25,8 @@
     "horizontal_scrolling": "keyboard navigation observed; two-finger trackpad scroll manually confirmed by user with stationary surrounding page",
     "compact_layout": "600px and 800px native layouts, navigation, theme inspector, search and overlays reviewed",
     "screen_reader": "not implemented: semantic controls absent from platform accessibility tree",
-    "github_actions": "native/security/package workflows configured; no remote run verified",
-    "docs_rs_service": "not published; hosted build not verified",
+    "github_actions": "initial source commit passed Native checks and Package release candidate, including macOS/Linux jobs; later documentation pushes have separate runs",
+    "docs_rs_service": "hosted API pages available for all five crates",
     "dependency_advisories": {
       "tool": "cargo-audit 0.22.2",
       "database": {
@@ -48,9 +48,73 @@
       "details": "dependency-audit.md"
     },
     "packaged_examples": "passed",
-    "simple_launcher_examples": "form validation/edit/save/checkbox/disable passed before bounds-only adjustment; final packaged overlays dialog/OK notification/drawer/Done and last-window shutdown passed"
+    "simple_launcher_examples": "form validation/edit/save/checkbox/disable passed before bounds-only adjustment; final packaged overlays dialog/OK notification/drawer/Done and last-window shutdown passed",
+    "published_registry_consumer": "app and hello/form/overlays example builds passed; registry sources verified, without paths, patches or source replacement",
+    "published_registry_native": "hello app launched; Say hello displayed Hello notification",
+    "published_registry_audit": {
+      "vulnerabilities": 0,
+      "unsoundness": 0,
+      "maintenance_warnings": 14,
+      "deny_unsound": "passed"
+    },
+    "published_archive_checksums": "all five downloaded from crates.io and matched registry checksums"
   },
   "artifacts": [
+    {
+      "file": "rusty-gpui-http-0.4.0.crate",
+      "sha256": "dcba8449c486d8de09ebe96fe48f055421513b4fd9acccf68761b117652e2387",
+      "bytes": 33025,
+      "files": 11,
+      "published_at": "2026-10-30T18:18:02.463694Z",
+      "url": "https://crates.io/crates/rusty-gpui-http/0.4.0"
+    },
+    {
+      "file": "rusty-gpui-runtime-0.4.0.crate",
+      "sha256": "aaf48ffd58532c9be5c51c753efebe29f6353a008fcd43cfca84f2d9e6a30942",
+      "bytes": 634031,
+      "files": 146,
+      "published_at": "2026-10-30T18:19:48.962734Z",
+      "url": "https://crates.io/crates/rusty-gpui-runtime/0.4.0"
+    },
+    {
+      "file": "rusty-gpui-theme-0.4.0.crate",
+      "sha256": "ea3a729b7f63c885bd661a31c163954b00ce5737b719622787e39423404daab3",
+      "bytes": 5843,
+      "files": 7,
+      "published_at": "2026-10-30T18:20:02.973945Z",
+      "url": "https://crates.io/crates/rusty-gpui-theme/0.4.0"
+    },
+    {
+      "file": "rusty-gpui-components-0.4.0.crate",
+      "sha256": "96c684f7ff509905632ae058b0962d915c32c690b91d853eea6a4f831b644799",
+      "bytes": 430792,
+      "files": 212,
+      "published_at": "2026-10-30T18:21:27.125778Z",
+      "url": "https://crates.io/crates/rusty-gpui-components/0.4.0"
+    },
+    {
+      "file": "rusty-gpui-0.4.0.crate",
+      "sha256": "7ddc3754690cdae03eb9de502781d291ebe93dc39dd25a74fa7040a554b51709",
+      "bytes": 537223,
+      "files": 108,
+      "published_at": "2026-10-30T18:22:05.247926Z",
+      "url": "https://crates.io/crates/rusty-gpui/0.4.0"
+    }
+  ],
+  "validated_date": "2026-10-30",
+  "platform": {
+    "architecture": "arm64",
+    "macos": "27.0.1",
+    "xcode": "27.1 (27A9275)"
+  },
+  "remaining_limits": [
+    "Runtime lacks semantic screen-reader support for custom controls.",
+    "Fresh native Linux/Windows execution and alternate display scales/monitors unavailable in this macOS session.",
+    "Third-party block 0.1.6 and proc-macro-error2 2.0.1 emit future-compatibility notices.",
+    "Dependency maintenance warnings and optional webview/test-support unsoundness advisories remain; see dependency-audit.md."
+  ],
+  "published_date": "2026-10-30",
+  "preparation_artifacts": [
     {
       "file": "rusty-gpui-http-0.4.0.crate",
       "sha256": "05201044d240db384218177d6d97ea4af7c0be052beaa3a26810e17a5e6a1f4b",
@@ -82,17 +146,26 @@
       "files": 107
     }
   ],
-  "validated_date": "2026-10-30",
-  "platform": {
-    "architecture": "arm64",
-    "macos": "27.0.1",
-    "xcode": "27.1 (27A9275)"
-  },
-  "remaining_limits": [
-    "Runtime lacks semantic screen-reader support for custom controls.",
-    "Fresh native Linux/Windows execution and alternate display scales/monitors unavailable in this macOS session.",
-    "Remote CI and hosted docs.rs cannot be verified before push/publication.",
-    "Third-party block 0.1.6 and proc-macro-error2 2.0.1 emit future-compatibility notices.",
-    "Dependency maintenance warnings and optional webview/test-support unsoundness advisories remain; see dependency-audit.md."
-  ]
+  "documentation": {
+    "rusty-gpui": {
+      "status": "available",
+      "url": "https://docs.rs/rusty-gpui/0.4.0/rusty_gpui/"
+    },
+    "rusty-gpui-http": {
+      "status": "available",
+      "url": "https://docs.rs/rusty-gpui-http/0.4.0/rusty_gpui_http/"
+    },
+    "rusty-gpui-runtime": {
+      "status": "available",
+      "url": "https://docs.rs/rusty-gpui-runtime/0.4.0/rusty_gpui_runtime/"
+    },
+    "rusty-gpui-theme": {
+      "status": "available",
+      "url": "https://docs.rs/rusty-gpui-theme/0.4.0/rusty_gpui_theme/"
+    },
+    "rusty-gpui-components": {
+      "status": "available",
+      "url": "https://docs.rs/rusty-gpui-components/0.4.0/rusty_gpui_components/"
+    }
+  }
 }

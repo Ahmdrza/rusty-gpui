@@ -1,6 +1,6 @@
 # Production readiness gates
 
-Rusty GPUI 0.4.0 is an unpublished pre-1.0 candidate. Passing compilation and package checks does not establish production readiness. This file separates release engineering from the remaining renderer and platform work.
+Rusty GPUI 0.4.0 is a published early pre-1.0 release. Passing compilation and package checks does not establish production readiness. This file separates release engineering from the remaining renderer and platform work.
 
 ## Accessibility blocks a general production recommendation
 
@@ -13,15 +13,15 @@ Completion requires all of the following:
 - Component semantics for labels, required/invalid/disabled fields, password protection, selection state, expanded popups, table headers/rows and modal boundaries.
 - Native screen-reader checks of navigation, editing, value changes and validation; modal background content must be excluded while open. Virtualized table semantics must remain valid while rows are recycled.
 
-These changes span the runtime, element API and component catalog. They are not implemented by this release preparation and must not be advertised as supported. Applications that require screen-reader support should not adopt this candidate for production.
+These changes span the runtime, element API and component catalog. They are not implemented by this release preparation and must not be advertised as supported. Applications that require screen-reader support should not adopt this release for production.
 
 ## Platform and release evidence
 
 - macOS: local native results and their exact limits are recorded in [the review](local-macos-review.md).
-- Linux: fresh compilation, tests and packaged-consumer builds must pass on GitHub CI after the source is pushed. A native Linux visual/keyboard review is still required; a macOS run cannot establish Linux runtime behavior.
+- Linux: compilation, tests and packaged-consumer builds passed in the initial GitHub CI runs. A native Linux visual/keyboard review is still required; a macOS run cannot establish Linux runtime behavior.
 - Windows: experimental, outside the validated release targets. Windows support requires its own build and native review before being advertised as supported.
 - Display scaling: the local Retina run does not establish behavior on other display scales or monitors.
-- Distribution: regenerate package evidence after library changes; run a fresh registry consumer and verify hosted docs after publication.
+- Distribution: all five archives are published, a fresh registry consumer built and ran on macOS, and hosted API docs are available. Future library changes require a new version and refreshed package evidence.
 
 ## Dependency maintenance and optional features
 
@@ -31,6 +31,6 @@ The optional webview feature remains experimental and must not be described as p
 
 ## GitHub handoff
 
-Both Native checks and Package release candidate run on push/PR for macOS and Linux. The packaging job builds an independent application from the actual crate archives. CI results remain pending until the reviewed source is pushed. Neither workflow publishes crates.
+Both Native checks and Package release candidate run on push/PR for macOS and Linux. The packaging job builds an independent application from the actual crate archives. Both workflows passed for the initial source push; see release readiness for links. Later documentation pushes run them again. Neither workflow publishes crates.
 
 Before describing a release as production ready, close the accessibility gap, obtain the platform evidence above, and evaluate a real application's editing, navigation, overlays and data workflows. See [release readiness](release-readiness.md) for the artifact and publication steps.

@@ -4,7 +4,7 @@ Main crate: **`rusty-gpui`**. Source: [Ahmdrza/rusty-gpui](https://github.com/Ah
 
 A configurable native Rust design system for GPUI. Shared foundations for actions, fields, selection, navigation, feedback, overlays and data, with an interactive gallery for development.
 
-**0.4.0 is a release candidate prepared for publication. Nothing has been uploaded to crates.io yet.**
+**0.4.0 is available on [crates.io](https://crates.io/crates/rusty-gpui). This is an early pre-1.0 release with the support limits below.**
 
 The current renderer does not expose semantic controls to platform screen readers. Applications requiring screen-reader support should wait for runtime accessibility integration. See [production readiness gates](docs/production-readiness.md) for the remaining platform and accessibility work.
 
@@ -12,16 +12,24 @@ The current renderer does not expose semantic controls to platform screen reader
 
 | Package | Role | Published? |
 |---|---|---|
-| `rusty-gpui` | Public entry point: theme integration, components, assets, typography and layout | Planned |
-| `rusty-gpui-runtime` | GPUI 0.2.2 compatibility runtime, used internally | Planned |
-| `rusty-gpui-http` | Narrow HTTP/archive compatibility dependency | Planned |
-| `rusty-gpui-theme` | Dependency-free semantic colors and design tokens | Planned |
-| `rusty-gpui-components` | Maintained native component fork with Rusty GPUI foundations and fixes | Planned |
+| `rusty-gpui` | Public entry point: theme integration, components, assets, typography and layout | 0.4.0 |
+| `rusty-gpui-runtime` | GPUI 0.2.2 compatibility runtime, used internally | 0.4.0 |
+| `rusty-gpui-http` | Narrow HTTP/archive compatibility dependency | 0.4.0 |
+| `rusty-gpui-theme` | Dependency-free semantic colors and design tokens | 0.4.0 |
+| `rusty-gpui-components` | Maintained native component fork with Rusty GPUI foundations and fixes | 0.4.0 |
 | `rusty-gpui-gallery` | Interactive showcase and development workbench | Never; `publish = false` |
 
 Applications depend on `rusty-gpui`. The gallery is not part of the library packages. No consumer-side Cargo patches are required.
 
-## Use locally
+## Install
+
+```sh
+cargo add rusty-gpui
+```
+
+Or add `rusty-gpui = "0.4"` under `[dependencies]` in your application’s Cargo.toml. Copy the complete [hello app](crates/rusty-gpui/examples/hello.rs) into `src/main.rs`, then run `cargo run`.
+
+## Develop locally
 
 ```toml
 [dependencies]
@@ -55,7 +63,7 @@ cargo run -p rusty-gpui --example overlays
 
 Coming from npm? See [Rusty GPUI for Node.js developers](docs/coming-from-node.md) for Cargo equivalents, local app setup, and how GitHub source, crate packaging and examples fit together. The repository keeps its examples; consuming applications build the library without building those example executables.
 
-Once the planned packages are published, the dependency becomes `rusty-gpui = "0.4"`. This registry command will not work until publication. Git dependencies will also work after the repository is pushed, using `package = "rusty-gpui"` from this workspace.
+The registry and GitHub use the same library source. Use a path dependency while developing the library locally; use the versioned registry dependency in an application.
 
 ## Gallery
 

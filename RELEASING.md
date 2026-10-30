@@ -1,6 +1,6 @@
 # Publishing Rusty GPUI
 
-The repository contains five publishable libraries and an unpublished gallery. No package has been published by this preparation work. The 0.4.0 dependency examples describe the planned release.
+The repository contains five publishable libraries and an unpublished gallery. All five libraries were published as 0.4.0 on 2026-10-30. The steps below document the release process for future versions.
 
 ## Before the first GitHub push
 
@@ -95,7 +95,7 @@ cargo publish -p rusty-gpui
 
 Before the lower-level crates are published, a normal crates.io dry run of the facade may fail because its registry dependencies do not exist yet. The local-registry check solves pre-publication validation; it does not claim the remote registry has those packages.
 
-Do not use --no-verify to bypass checks during real publication. The staging script uses it only while producing candidate archives, then separately compiles the patch-free consumer. crates.io publication is externally visible; package versions are immutable. This handoff has not performed those commands.
+Do not use --no-verify to bypass checks during real publication. The staging script uses it only while producing candidate archives, then separately compiles the patch-free consumer. crates.io publication is externally visible; package versions are immutable. The 0.4.0 release used normal verified publication for all five crates.
 
 After all five are published, confirm a fresh app can add rusty-gpui = "0.4" from crates.io without source replacement or patches. Check documentation builds, change the changelog entry from Unreleased to its release date, and create the corresponding v0.4.0 Git tag/GitHub release.
 

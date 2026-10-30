@@ -32,9 +32,19 @@ cargo run -p rusty-gpui --example overlays
 
 The `rusty_gpui::run("Window title", build_view)` helper sets up assets, fonts, the default theme, window, Root, overlay layers and shutdown. Each example is a complete file that you can copy into your application's `src/main.rs`.
 
-## Start your own app today
+## Start your own app
 
-Rusty GPUI 0.4.0 has not been published yet. Create your app **beside** the Rusty GPUI checkout:
+```sh
+cargo new my-app
+cd my-app
+cargo add rusty-gpui
+```
+
+Copy the hello example into `src/main.rs`, then run `cargo run`. The registry dependency is `rusty-gpui = "0.4"`.
+
+## Develop against a local checkout
+
+To work on the library and an application together, create your app **beside** the Rusty GPUI checkout:
 
 ```text
 projects/
@@ -58,7 +68,7 @@ rusty-gpui = { path = "../rusty-gpui/crates/rusty-gpui" }
 
 Copy `rusty-gpui/crates/rusty-gpui/examples/hello.rs` into `my-app/src/main.rs`, then run `cargo run`. Use the form and overlays examples as you add components. They import the matching runtime through `rusty_gpui::gpui`, so your app needs just the facade dependency.
 
-After registry publication, the dependency becomes `rusty-gpui = "0.4"`; `cargo add rusty-gpui` will then work. Platform prerequisites still apply: full Xcode/Metal on macOS and the graphics/windowing libraries in CONTRIBUTING.md on Linux.
+For normal application development, use `rusty-gpui = "0.4"` or `cargo add rusty-gpui` instead of a local path. Platform prerequisites still apply: full Xcode/Metal on macOS and the graphics/windowing libraries in CONTRIBUTING.md on Linux.
 
 ## Keep examples in GitHub
 

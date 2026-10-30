@@ -119,3 +119,12 @@ The hello, form and overlays examples are complete copyable files using the faca
 The final five archives passed the isolated registry consumer check, README doctest and builds of the starter and all packaged examples. Facade/theme/gallery formatting and packaged facade/theme documentation (broken intra-doc links denied) passed. The packaged consumer again passed cargo-audit with unsoundness denied: zero vulnerabilities, zero unsoundness warnings and 14 maintenance warnings. Existing platform/accessibility limits remain.
 
 The local release checker now exposes only dependency versions with cached archives, avoiding sparse-index entries whose archives are unavailable offline. It also checks/builds the example files extracted from the actual facade archive. This tooling change does not alter published dependency requirements.
+
+
+### Published 0.4.0 verification — 2026-10-30
+
+All five crates passed normal Cargo dry-run verification and were published in dependency order. Downloaded every published archive from crates.io and checked its SHA-256 against the registry metadata. Published archives include Cargo VCS metadata and differ from the earlier pre-Git candidate hashes; the release-validation report records both sets separately.
+
+Built a fresh application plus hello/form/overlays example targets with only `rusty-gpui = "=0.4.0"` from crates.io. No local paths, patches or source replacement were supplied. Native metadata confirmed registry sources throughout. Launched that registry-built hello app and clicked Say hello; the Hello notification appeared. The window capture was 1440×1104 physical pixels on this Retina display, consistent with the requested 720×520 logical content plus native titlebar. The registry consumer audit passed with unsoundness denied: zero vulnerabilities, zero unsoundness warnings, 14 maintenance warnings.
+
+The initial GitHub source push passed Native checks and Package release candidate for macOS/Linux (links in release readiness). Hosted API documentation was available for all five packages. This closes the earlier remote CI and docs hosting gaps; Linux native visual/keyboard review, Windows, alternate displays and semantic accessibility remain outside this validation.
