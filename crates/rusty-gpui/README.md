@@ -9,7 +9,7 @@ rusty-gpui = "0.4"
 gpui = { package = "rusty-gpui-runtime", version = "=0.4.0", default-features = false }
 ```
 
-These dependency versions are the planned 0.4.0 release; they must be published before this registry installation works. For development, use a path to this crate. No consumer patch entries or gallery dependency are required.
+For local library development, use a path to this crate. No consumer patch entries or gallery dependency are required.
 
 ## First application
 

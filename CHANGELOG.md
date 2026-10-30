@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.0 — Unreleased
+## 0.4.0 — 2026-10-30
 
 - Add `rusty_gpui::run` for automatic single-window setup and overlay layers, with copyable hello, form and overlay apps and a Cargo guide for Node.js developers.
 
